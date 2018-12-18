@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FMC</title>   
+<style type="text/css">
+html, body, #googft-mapCanvas {
+  height: 700px;
+  margin: 0; 
+  padding: 0;
+  width: 1000px;
+}
+     #full-screen-background-image {
+        z-index: -999;
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+</style>
+
+<body style="overflow-y:hidden ; overflow-x: hidden">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<select id="producto" onchange="" name="producto" style="position: relative ; top: 40px ;left:20px;background-color: orange;color:white;" >			
+	<option value="">Seleccione una...</option>
+	<option value="">Todas</option>	
+	<option value="ARH853">ARH853</option>
+	<option value="AWG700">AWG700</option>	
+	<option value="AYA902">AYA902</option>
+	<option value="AWF920">AWF920</option>	
+	<option value="AWS914">AWS914</option>	
+	<option value="AWG840">AWG840</option>		
+	<option value="AYB775">AYB775</option>
+	<option value="AWG801">AWG801</option>	
+	<option value="AWF949">AWF949</option>	
+	<option value="AWT765">AWT765</option>	
+	<option value="AWG831">AWG831</option>	
+	<option value="AXH711">AXH711</option>
+	<option value="AWS949">AWS949</option>
+	<option value="AYA925">AYA925</option>	
+	<option value="AWT808">AWT808</option>	
+	<option value="AWT862">AWT862</option>	
+	<option value="AXG908">AXG908</option>	
+	<option value="AWT793">AWT793</option>
+	<option value="AWT762">AWT762</option>
+	<option value="AWG746">AWG746</option>	
+	<option value="AWG721">AWG721</option>	
+	<option value="AWG740">AWG740</option>	
+	<option value="AWU850">AWU850</option>	
+	<option value="AWG718">AWG718</option>
+	<option value="AWT877">AWT877</option>
+	<option value="AWU773">AWU773</option>
+</select>	
+<select id="evento" onchange="" name="evento" style="position: relative ; top: 40px ;left:20px;background-color: orange;color:white;" >			
+	<option value="">Seleccione una...</option>
+	<option value="">Todos</option>	
+	<option value="Desatenci%C3%B3n">Desatencion</option>
+	<option value="Distancia+Desatendida">Distancia desatendida</option>
+	<option value="Desv%C3%ADo+de+Carril">Desvio de Carril</option>
+	<option value="Movimiento+Brusco">Movimiento Brusco</option>
+	<option value="Exceso+de+Velocidad">Exceso de Velocidad</option>
+</select>
+<button onclick="prueba(producto)"style="position: relative ; top: 40px ;left:20px;" 	>Enviar</button>
+<button onclick="prueba2(video)"style="position: relative ; top: 475px ;left:1090px;" 	>Enviar</button>
+<script type="text/javascript">
+function prueba2(video) {
+var VIDEO=document.getElementById("video").value;
+document.getElementById("MyVid").src =VIDEO;
+}
+function prueba(producto,evento) {
+var PATENTE=document.getElementById("producto").value;
+var EVENTO=document.getElementById("evento").value;  
+var iframeUrl;
+var iframeUr2;
+if ((PATENTE!=="")&&(EVENTO!=="")){
+        iframeUrl = "https://fusiontables.google.com/embedviz?q=select+col11+from+1oZ09R7ZYhUSs4XNwI70cxWtmEBolO-OJ3mxsleZc+where+col2+%3D+'"+PATENTE+"'+and+col2+%3D+'"+EVENTO+"'&viz=MAP&h=false&lat=-12.83435468552063&lng=-76.42878680601609&t=1&z=11&l=col11&y=2&tmplt=2&hml=ONE_COL_LAT_LNG";
+	iframeUr2 = "https://fusiontables.google.com/embedviz?viz=GVIZ&amp;t=TABLE&amp;q=select+col0%2C+col1%2C+col2%2C+col3%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col15+from+1QQ9QoumAIcBiWwiFcLKwzeoAlaboZh1DoCRW6Ey_+where+col0+%3D+&#39;"+PATENTE+"&#39;+and+col2+%3D+&#39;"+EVENTO+"&#39;&amp;containerId=googft-gviz-canvas";
+}
+else if((PATENTE!=="")&&(EVENTO=="")){     
+ 	iframeUrl = "https://fusiontables.google.com/embedviz?q=select+col11+from+1oZ09R7ZYhUSs4XNwI70cxWtmEBolO-OJ3mxsleZc+where+col2+%3D+'"+PATENTE+"'&viz=MAP&h=false&lat=-12.133991325659043&lng=-76.4950496436166&t=1&z=10&l=col11&y=2&tmplt=2&hml=ONE_COL_LAT_LNG";
+	iframeUr2 = "https://fusiontables.google.com/embedviz?viz=GVIZ&t=TABLE&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col15+from+1QQ9QoumAIcBiWwiFcLKwzeoAlaboZh1DoCRW6Ey_+where+col0+%3D+'"+PATENTE+"'&containerId=googft-gviz-canvas";
+}
+else if((PATENTE=="")&&(EVENTO!=="")){      
+ 	iframeUrl = "https://fusiontables.google.com/embedviz?q=select+col11+from+1oZ09R7ZYhUSs4XNwI70cxWtmEBolO-OJ3mxsleZc+where+col2+%3D+'"+EVENTO+"'&viz=MAP&h=false&lat=-12.133991325659043&lng=-76.4950496436166&t=1&z=10&l=col11&y=2&tmplt=2&hml=ONE_COL_LAT_LNG";
+
+	iframeUr2 = "https://fusiontables.google.com/embedviz?viz=GVIZ&t=TABLE&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col15+from+1QQ9QoumAIcBiWwiFcLKwzeoAlaboZh1DoCRW6Ey_+where+col2+%3D+'"+EVENTO+"'&containerId=googft-gviz-canvas";
+}
+else {
+	iframeUrl = "https://fusiontables.google.com/embedviz?q=select+col11+from+1oZ09R7ZYhUSs4XNwI70cxWtmEBolO-OJ3mxsleZc&viz=MAP&h=false&lat=-12.133991325659043&lng=-76.4950496436166&t=1&z=10&l=col11&y=2&tmplt=2&hml=ONE_COL_LAT_LNG";
+	iframeUr2 = "https://fusiontables.google.com/embedviz?viz=GVIZ&t=TABLE&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col15+from+1QQ9QoumAIcBiWwiFcLKwzeoAlaboZh1DoCRW6Ey_&containerId=googft-gviz-canvas";
+}
+
+mainframe.location.href = iframeUrl;
+leftFrame.location.href = iframeUr2;
+}
+
+</script>
+</head>
+<body>
+
+<form name="hiddenForm">
+<div><input name="hiddenField" type="hidden"></div>
+</form>
+<iframe src=""id="MyVid"frameborder="0" allowfullscreen="1" width="512" height="384" style="display:scroll;position:fixed;top:82px;left:1050px;border: solid orange ;"></iframe>
+<img alt="full screen background image" src="Imagenes/FONDO.jpg" id="full-screen-background-image" /> 
+<input type="text" id="video" size="50" style="position: relative ; top: 455px ;left:1050px;" > 
+<iframe id="Mapa" width="800" height="500" scrolling="no" frameborder="no" name="mainframe" src="" style="margin: 40px auto 130px 240px;border: solid orange ;"></iframe>
+<iframe id="tabla" width="1200" height="80" scrolling="yes" frameborder="no" name="leftFrame" src="" style="position: relative ; top: -120px ;left:150px;border: solid orange ;"></iframe>
+</body>
+</html>
+
+
