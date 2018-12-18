@@ -70,8 +70,13 @@ html, body, #googft-mapCanvas {
 function prueba2(video) {
 	
 var VIDEO=document.getElementById("video").value;
-
-document.getElementById("MyVid").src =VIDEO;
+if(VIDEO=="Cabin-18_10_27-08_10_39-120107.avi"){
+document.getElementById("MyVid").src ="https://drive.google.com/file/d/1rT1OrYh4eKcPSjth_xFgJ_UOAqEJYL5v/preview?rel=0&amp;showinfo=0";
+}
+else if(VIDEO=="Cabin-18_10_14-22_50_11-61684.avi"){
+document.getElementById("MyVid").src ="https://drive.google.com/file/d/1NMupU_lXqZbHFjJgx4w6cTt1vQ-xFlgU/preview?rel=0&amp;showinfo=0";
+}
+//document.getElementById("MyVid").src =VIDEO;
 
 }
 	
